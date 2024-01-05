@@ -1,5 +1,5 @@
 import axios from "axios";
 
 export default axios.create({
-  baseURL: "http://localhost:4000", // Prod
+  baseURL: "https://house-backend-393e.onrender.com", // Prod
 });
