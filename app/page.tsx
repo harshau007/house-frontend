@@ -7,7 +7,6 @@ import Jobs from './components/Jobs';
 import jwt  from 'jsonwebtoken';
 import cookieCutter from '@boiseitguru/cookie-cutter'
 import { useRouter } from 'next/navigation';
-import next from 'next';
 
 const Page: any = () => {
   const [searchQuery, setSearchQuery] = useState('');
@@ -28,7 +27,7 @@ const Page: any = () => {
           value = true;
         }
       } catch(err) {
-        router.push("/login")
+        // router.push("/login")
       }
       return value
     } 
@@ -38,14 +37,21 @@ const Page: any = () => {
 
 
   return (
-    isAuth ? 
+    // isAuth ? 
+    // <div className="app no-scrollbar">
+    //   <Navbar />
+    //   <div className="container mx-auto">
+    //     <SearchBar onSearch={handleSearch} />
+    //     <Jobs />
+    //   </div>
+    // </div> : useEffect(()=> router.push('/login'))
     <div className="app no-scrollbar">
       <Navbar />
       <div className="container mx-auto">
         <SearchBar onSearch={handleSearch} />
         <Jobs />
       </div>
-    </div> : useEffect(()=> router.push('/login'))
+    </div>
   );
 };
 
