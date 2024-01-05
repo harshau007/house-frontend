@@ -1,12 +1,9 @@
 import React, { useState } from "react";
 import NavLink from "../components/NavLink";
 import { FiMenu, FiX } from "react-icons/fi";
+import { deleteCookie } from 'cookies-next';
 
 const navLinks = [
-  {
-    title: "Home",
-    path: "/"
-  },
   {
     title: "Login",
     path: "/login",
@@ -24,11 +21,16 @@ const Navbar = () => {
     setNavbarOpen(!navbarOpen);
   };
 
+  const handleSignOut = () => {
+    deleteCookie('Authorization', { path: '/'})
+    console.log("Signout")
+  }
+
   return (
     <nav className="lg:fixed relative mx-auto rounded-lg top-10 lg:left-10 left-1 right-10 z-50 bg-[#000000] bg-opacity-100">
       <div className="flex container lg:py-4 flex-wrap items-center justify-between mx-auto px-4 py-2">
         <div className="text-white text-2xl md:text-5xl">
-          <span style={{ fontWeight: "bold" }}>OS</span>Portal
+          <a href="/"><span style={{ fontWeight: "bold" }}>OS</span>Portal</a>
         </div>
         <div className="mobile-menu block md:hidden">
           <button
@@ -54,6 +56,9 @@ const Navbar = () => {
                 <NavLink href={link.path} title={link.title} />
               </li>
             ))}
+            <li>
+              <a onClick={handleSignOut} href="/signout">Sign Out</a>
+            </li>
           </ul>
         </div>
       </div>
