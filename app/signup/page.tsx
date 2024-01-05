@@ -73,6 +73,7 @@ const Page: React.FC = () => {
               Create Account
             </button>
           </form>
+          <h1>Already have an account ? <a href="/login" className="hover:text-blue-200">login</a></h1>
         </div>
       )}
     </section>
