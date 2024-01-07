@@ -8,14 +8,10 @@ interface SearchBarProps {
   onSearch: (query: string, jobType1: string) => void;
 }
 
-const SearchBar: React.FC<SearchBarProps> = ({ onSearch }) => {
+const SearchBar: React.FC = () => {
   const [query, setQuery] = useState("");
   const [jobType1, setJobType1] = useState("");
   const [jobs, setJobs] = useState([]);
-
-  const handleSearch1 = () => {
-    onSearch(query, jobType1);
-  };
 
   //post/search/query?search=Delhi&sort=desc
 

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import NavLink from "../components/NavLink";
 import { FiMenu, FiX } from "react-icons/fi";
 import { deleteCookie } from 'cookies-next';
-import { setIsLogin } from "../page";
+import { setIsLogin } from "../../constant/isLoggedin";
 
 const navLinks = [
   {

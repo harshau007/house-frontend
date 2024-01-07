@@ -1,17 +1,13 @@
 'use client'
 import './globals.css'
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import axios from './api/axios';
 import cookieCutter from '@boiseitguru/cookie-cutter'
 import Login from './components/login';
 import Dashboard from './components/dashboard';
-import { useRouter } from 'next/navigation';
-
-export const [isLogin, setIsLogin] = useState(false);
+import { isLogin, setIsLogin } from '../constant/isLoggedin';
 
 const Page: any = () => {
-  const router = useRouter();
-
   useEffect(() => {
     axios.get(
       '/users/verify/token', {
