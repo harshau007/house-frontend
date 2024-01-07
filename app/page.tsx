@@ -7,8 +7,9 @@ import Login from './components/login';
 import Dashboard from './components/dashboard';
 import { useRouter } from 'next/navigation';
 
+export const [isLogin, setIsLogin] = useState(false);
+
 const Page: any = () => {
-  const [isLogin, setIsLogin] = useState(false);
   const router = useRouter();
 
   useEffect(() => {

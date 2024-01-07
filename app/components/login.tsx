@@ -28,7 +28,7 @@ const Login: React.FC = () => {
       Cookies.set('Authorization',response.headers['authorization'],{ sameSite: 'none', secure: true, path: '/' });
       if(response.data.accessToken) {
         setTimeout(()=> {
-          router.refresh();
+          router.replace('/dashboard');
         },1000)
       }
       console.log(response)

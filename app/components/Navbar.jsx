@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import NavLink from "../components/NavLink";
 import { FiMenu, FiX } from "react-icons/fi";
 import { deleteCookie } from 'cookies-next';
+import { setIsLogin } from "../page";
 
 const navLinks = [
   {
@@ -23,6 +24,7 @@ const Navbar = () => {
 
   const handleSignOut = () => {
     deleteCookie('Authorization', { path: '/'})
+    setIsLogin(false);
     console.log("Signout")
   }
 
