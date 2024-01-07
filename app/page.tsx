@@ -1,25 +1,37 @@
 'use client'
 import './globals.css'
-import React, { useState } from 'react';
-import SearchBar from './components/SearchBar';
-import Navbar from './components/Navbar';
-import Jobs from './components/Jobs';
+import React, { useEffect, useState } from 'react';
+import axios from './api/axios';
+import cookieCutter from '@boiseitguru/cookie-cutter'
+import Login from './components/login';
+import Dashboard from './components/dashboard';
+import { useRouter } from 'next/navigation';
 
 const Page: any = () => {
-  const [searchQuery, setSearchQuery] = useState('');
+  const [isLogin, setIsLogin] = useState(false);
+  const router = useRouter();
 
-  const handleSearch = (query: string) => {
-    setSearchQuery(query);
-  };
+  useEffect(() => {
+    axios.get(
+      '/users/verify/token', {
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": cookieCutter.get('Authorization')
+        },
+        withCredentials: true
+      }
+    ).then((res) => res.data)
+    .then((data) => {
+      console.log(data.isVerified)
+      setIsLogin(data.isVerified);
+    })        
+    .catch(error => {
+      console.error(error);
+    });
+  }, []);
 
   return (
-    <div className="app no-scrollbar">
-      <Navbar />
-      <div className="container mx-auto">
-        <SearchBar onSearch={handleSearch} />
-        <Jobs />
-      </div>
-    </div>
+    isLogin ? <Dashboard/> : <Login/>
   );
 };
 
