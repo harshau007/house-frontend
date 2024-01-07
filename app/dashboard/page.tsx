@@ -6,7 +6,6 @@ import Navbar from '../components/Navbar';
 import Jobs from '../components/Jobs';
 
 const Page: React.FC = () => {
-
   return (
     <div className="app no-scrollbar">
       <Navbar />

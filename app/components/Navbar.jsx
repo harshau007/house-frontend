@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import NavLink from "../components/NavLink";
 import { FiMenu, FiX } from "react-icons/fi";
 import { deleteCookie } from 'cookies-next';
-import { setIsLogin } from "../../constant/isLoggedin";
+import { useBetween } from "use-between";
+import shareableLogginState from "../constant/loggin";
 
 const navLinks = [
   {
@@ -17,6 +18,7 @@ const navLinks = [
 
 const Navbar = () => {
   const [navbarOpen, setNavbarOpen] = useState(false);
+  const { setIsLoggedIn } = useBetween(shareableLogginState);
 
   const toggleNavbar = () => {
     setNavbarOpen(!navbarOpen);
@@ -24,7 +26,7 @@ const Navbar = () => {
 
   const handleSignOut = () => {
     deleteCookie('Authorization', { path: '/'})
-    setIsLogin(false);
+    setIsLoggedIn(false);
     console.log("Signout")
   }
 

@@ -1,13 +1,16 @@
 'use client'
 import './globals.css'
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from './api/axios';
 import cookieCutter from '@boiseitguru/cookie-cutter'
 import Login from './components/login';
 import Dashboard from './components/dashboard';
-import { isLogin, setIsLogin } from '../constant/isLoggedin';
+import { useBetween } from 'use-between';
+import shareableLogginState from './constant/loggin';
 
 const Page: any = () => {
+  const { isLoggedIn, setIsLoggedIn } = useBetween(shareableLogginState);
+
   useEffect(() => {
     axios.get(
       '/users/verify/token', {
@@ -20,7 +23,7 @@ const Page: any = () => {
     ).then((res) => res.data)
     .then((data) => {
       console.log(data.isVerified)
-      setIsLogin(data.isVerified);
+      setIsLoggedIn(data.isVerified);
     })        
     .catch(error => {
       console.error(error);
@@ -28,7 +31,7 @@ const Page: any = () => {
   }, []);
 
   return (
-    isLogin ? <Dashboard/> : <Login/>
+    isLoggedIn ? <Dashboard/> : <Login/>
   );
 };
 
