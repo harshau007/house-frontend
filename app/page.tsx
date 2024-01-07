@@ -5,11 +5,9 @@ import axios from './api/axios';
 import cookieCutter from '@boiseitguru/cookie-cutter'
 import Login from './components/login';
 import Dashboard from './components/dashboard';
-import { useBetween } from 'use-between';
-import shareableLogginState from './constant/loggin';
 
 const Page: any = () => {
-  const { isLoggedIn, setIsLoggedIn } = useBetween(shareableLogginState);
+  const [ isLoggedIn, setIsLoggedIn ] = useState(false);
 
   useEffect(() => {
     axios.get(
