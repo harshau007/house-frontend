@@ -25,8 +25,8 @@ const Navbar = () => {
   };
 
   const handleSignOut = () => {
-    deleteCookie('Authorization', { path: '/'})
     setIsLoggedIn(false);
+    deleteCookie('Authorization', { path: '/'})
     console.log("Signout")
   }
 
@@ -61,7 +61,7 @@ const Navbar = () => {
               </li>
             ))}
             <li>
-              <a onClick={handleSignOut} href="/signout">Sign Out</a>
+              <a onClick={handleSignOut} href="/">Sign Out</a>
             </li>
           </ul>
         </div>
